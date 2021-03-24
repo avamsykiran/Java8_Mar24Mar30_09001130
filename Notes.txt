@@ -1,1 +1,252 @@
 https://github.com/avamsykiran/Java8_Mar24Mar30_09001130.git
+
+Java
+-----------------------------------------------------------
+
+    History & Evolution
+
+            GPL - Genernal Purpose Programing language
+            High level, partially and strictly object oriented 
+
+            Evolution
+                1.0,1.1,1.2,1.3...................1.11
+
+                java2 , java 4, java 5 ......java 8 .....java 11
+
+            Distributables
+
+                JRE Java Rutime Environment   
+                    JVM  Java Virtual Machine           
+                
+                JDK Java Development Kit
+
+                None of the above are platform independent.
+
+                Prog.java ---javac---> Prog.class (IBC) 
+
+                Intermediate Byte Code is paltformn independent.
+
+            Edition
+
+                Java SE     Standard Edition    (Core Java)
+                                    Buildin standalone or network based
+                                    console applications,
+                                    GUI applcations
+
+                Java EE     Enterprise Edition
+                                    Building Entripirse level (Distributed) applciation.
+                
+                Java ME     Micro Edition
+                                    Embede system development.(microcontroller programing)
+
+    Characteristics
+
+        1. High Level
+        2. Partially and Strictly Object oriented
+        3. Strongly Typed
+        4. Case Sensitive.
+        5. Syntax is inspired from C and C++, ; statement termination, {} for code blocks
+
+    Featurea
+
+        1. Simple
+        2. Robust
+        3. Distributed
+        4. Secure
+        5. Self Docuemnted
+        6. Multi Threaded
+        7. Platform independent
+        8. Archetecture Neutral
+
+    Tokens  smallest indivbisable unit of source code.
+        
+        Identifiers
+                    is a name of a resource (variable/object/method/class..etc)
+
+
+                    variable and method name must follow camel case
+                            starts in lower case and continues 
+                            in lower case but has initital capitals
+                            from the second segment of the name.
+
+                            length
+                            roomLength
+                            roomLengthInMeter
+
+                            display()
+                            displayData()
+                    
+                    Naems of user defiend data types (Classes / interfaces/enums/annnotations)
+                            follow initial capitals all through
+
+                        Week
+                        Month
+                        Employee
+                        ArrayIndexOutOfBoundsException
+
+                    Names of cosntants must be all capitals, and use _ to
+                    seperate the segments
+
+                            PI
+                            MIN_VALUE
+                            MAX_VALUE
+
+        Keywords
+
+                    is a reserved word.
+                    all keywords are lower in case.
+                    52 kws
+
+        Operators
+
+                    Binary  
+                        Arithmetic  +   -   *   /   %
+                        Assignment  =   -=  +=  *=  /=  %=
+                        Relational  ==  <   >   <=  >=  !=
+                        Logical     &&  ||  !
+                        
+                    Unary
+                                    -
+                                    --
+                                    ++
+
+                    Ternary         ?:
+
+                    Misllenous
+                                    .
+                                    ;
+                                    ()
+                                    {}
+                                    []
+                                    <>
+                                    ->
+                                    ::
+                                    new
+                                    instanceof
+
+        Comments
+                    //end of line Comments
+                    /* block Comments */
+
+        Literals    any hard coded value into the source code.
+
+                    class App01{
+                        public static void main(String args[]){
+                            final double PI = 3.14;
+                            int r = 23;
+                            double c = 2*PI*r;
+                        }
+                    }
+                                    line1   line2               line3          line4  
+                    Identifiers     App01   main,args           PI                 r
+                    Keywords        class   public,static,void  final,double    int
+                    Operators       {       [,],{               =
+                    Comments                                    
+                    Literals                                    3.14            23
+
+
+
+                    Integer Literals
+                            Decimal Numeric System
+                                    int x = 45;
+                                    int y = 78_865; 
+                            Hexadecimal Numeric System
+                                    int a = 0x1A;
+                                    int b = 0xFF;
+                            Octal Numeric System
+                                    int l = 012;
+                                    int m = 077;
+
+                    Floating Literals
+                            Decimal Numeric System
+                                double d = 56.67;
+                                float f = 3.14f;
+
+                    Stirng Literals         ""
+                    Character Literals      ''
+                    Boolean Literals        true,false
+                    Void Literals           null
+
+
+        Java Data Types
+
+            Primitive
+
+                    int
+                    short
+                    long
+                    Byte
+                    double
+                    float
+                    char
+                    boolean
+                    void
+
+            Reference/User Defined 
+
+                    Class
+                    Enum
+                    Interface
+                    Annotation
+
+        Control Structure
+
+            Branching/Decision Making Control Structure
+                    Simple if
+                    if .. else
+                    if ladder
+                    nested if
+                    switch          int,char,strings and enums
+
+            Iterating Control Structure/Loops
+
+                    for
+                    while
+                    do..while
+                    enhanced for/for each
+
+            Unconditional Control Structure
+
+                    break;
+                    continue;
+                    return;
+
+    Object Oriented Programming
+    ----------------------------------------
+
+            Class and Object
+                    1. Each object is a reference.
+                    2. Constructor
+                    3. this
+                    4. Field    -   Class Variable (Static fields), Instance Variable
+                    5. Method   -   Class Method (Static method), Instance Methods
+                    6. static 
+
+            Encapsulation
+                    Access Specifier / Modifer
+                        Public
+                        Private
+                        Protected
+                        Default
+                    
+                    using setters and getters.
+
+            Polymorphisim
+                        Overloading
+                        Overriding
+
+            Inheretence
+                       extends
+                       only one super class
+                       java.lang.Object is the implicit super class for all java classes.
+                       no multiple ineheretence for classes.
+
+            Abstraction
+                        abstract method
+                        abstract class
+                        interface
+                                        implements
+
+                                        one interfce can extended by another interface
+                                        any number of interfaces can be implemented by a class
+                                        
