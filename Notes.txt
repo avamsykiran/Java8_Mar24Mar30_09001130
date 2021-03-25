@@ -240,7 +240,7 @@ Java
                        only one super class
                        java.lang.Object is the implicit super class for all java classes.
                        no multiple ineheretence for classes.
-
+                        super keywrd
             Abstraction
                         abstract method
                         abstract class
@@ -249,4 +249,173 @@ Java
 
                                         one interfce can extended by another interface
                                         any number of interfaces can be implemented by a class
-                                        
+
+    =========================================================================================
+
+    interface
+                public abstract methods,
+                public static final fields,
+                public default method - that can have implementation
+                public static method
+                
+    java.lang               implicitly available packege.
+        Object
+                        implicit super class for all java classes.
+                        clone();
+                        boolean equals(Object);
+                        int hashcode();
+                        String toString();
+
+        System
+                        InputStream in,PrintStream err,PrintStream out
+
+                        void exit(int);
+                        void gc();
+
+        Math            sin,cos,log,sqrt,cbrt,exp,pow..............
+
+        String          immutable - they can not be changed/modified.
+        StringBuffer
+        StringBuilder
+        
+        Exceptions
+        ------------------------------------------------
+
+                        abnormality in the execution of our app.
+
+                        Throwable
+                            |
+                        ---------------------
+                        |                   |
+                        Error               Exception   
+                                            |   ------ ExcepotionClasses are derived CHECKED
+                                            |
+                                            RuntimeException
+                                                ------ ExcepotionClasses are derived UNCHECKED
+
+                    
+                    Compiler will not force the handling of UNCHECKED Exceptions.
+                                becoz, UNCHECKED exception are NOT SUPPOSED TO BE HANDLED
+                                BUT ARE SUPPOSED TO BE AVOIDED.
+
+                    ArrayIndexOutOfBoundsException
+                            public int increment(int n){
+                               return arr[n]++;
+                            }
+
+                            public int increment(int n){
+                                int result = 0;
+                                if(n>=0 && n<arr.length)
+                                    result = arr[n]++;
+                                return result;
+                            }
+
+                    NullPointerException
+                            public void inflate(Book book){
+                                if(book!=null)
+                                    book.setPrice(book.getPrice()*2);
+                            }
+                    
+                    Compiler will force the handling of CHECKED Exceptions
+
+                        IOException
+                        SQLException
+                        FileNotFoundException
+
+                    try{
+                        code that may throw an exception
+                    }catch(ExceptionType1 e){
+                        error handlign code
+                    }catch(ExceptionType2 e){
+                        error handlign code
+                    }catch(ExceptionType3 e){
+                        error handlign code
+                    }finally {
+                        code that has to execute 
+                        irrespective of an exception bneing thrown or not
+                    }
+
+                    //multi catch block
+                    try{
+                        code that may throw an exception
+                    }catch(ExceptionType1 | ExceptionType2 | ExceptionType3 e){
+                        error handling code
+                    }finally {
+                        code that has to execute 
+                        irrespective of an exception bneing thrown or not
+                    }
+
+                    //try-with-resources
+
+
+                    Connection con = null;
+
+                    try{
+                        con = DirverManger.getConnection(...);
+                        ...
+
+                    }catch(SQLException exp){
+                        ...........
+                    }finally{
+                        try{
+                         if(con!=null)
+                          con.clsoe();
+                        }catch(SQLException exp){
+
+                        }
+                    }                    
+
+                    try(Connection con =DirverManger.getConnection(...);){
+                        ...
+                    }catch(SQLException exp){
+                        ...........
+                    }
+
+
+                    throw           used to raise userdefiend exceptions.
+                    throws          uwsed to transfer an exception 
+                                    from the method to its caller.
+
+        java.time
+    
+            handle data and time operations.
+
+            LocalDate
+            LocalTime
+            LocalDateTime
+                            Class Methods
+                            .now()
+                            .of(int,int,int,int,int)
+                            Instance Methods
+                            .getHour() ...etc for each fields
+                            .toString()
+                            .format(DateTimeFormatter)
+                            .parse(String); //ISO yyyy-MM-ddThh:mm:ss
+                            .parse(String,DateTimeFormatter)
+                            .before(....)
+                            .after(....)
+
+            ZonalDate
+            ZonalTime
+            ZonalDateTime
+                            Class Methods
+                            .now(ZoneId)
+
+            DateTimeFormatter.ofPattern("");
+                            yy,yyyy             year
+                            M,MM,MMM,MMMM       month
+                            d,dd                day
+                            h,hh,H,HH           hour
+                            m,mm                minute
+                            s,ss                second
+                            a                   AM/PM
+
+            Duration
+            Period
+                            .between(start,end);
+
+
+    Threads
+    Generics and Coillections
+    Functional Interfaces, Lambda Expressions and Strems API
+    JDBC api
