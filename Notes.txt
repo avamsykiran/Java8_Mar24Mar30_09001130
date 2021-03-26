@@ -414,8 +414,232 @@ Java
             Period
                             .between(start,end);
 
-
     Threads
+                        Runnable
+                            |       public void run()
+                        Thread
+                                    Thread()
+                                    Thread(String name)
+                                    Thread(Runnable)
+                                    Thread(Runnable,String)
+
+                                    start();
+                                    getName()
+                                    setName(String)
+                                    getPriority();
+                                    setPriority(int); 1 to 10, default is 5.
+
+                                    currentThread(); //static
+                                    sleep(long); //static
+
+                        Thread Life Cycle
+                                Iniation
+                                Queued/Ready
+                                Running/Execution
+                                Paused
+                                Terminated
+   
+
+                                | new Thread() 
+                                Iniation
+                                |
+                                |start()
+                                |
+                                Queued/Ready ---CPU and other res's are available -- Running
+                                    | wakes up / notify()                                |
+                                Paused <---- sleep()/wait()<-----------------------------|
+                                                                        (job is compelet)|
+                                                                                        |
+                         class Job {                                                       Terminated
+                            public void doSomething(Object object) {
+                                ................
+                                synchronized (object){
+                                    ...
+                                }
+                                .............
+                            }
+
+                            public synchronized void doSomethingElse(){
+                                ..........
+                            }
+
+                            public synchronized static void staticMethod(){
+
+                            }// Job.class
+                         }
+
+    IO Streams
+                    stream is a flow of 'data'
+
+            BinaryStreams (data can written or read as 'bytes')
+
+                                java.io.OutputStream
+                    Program -----------> File
+                            -----------> Console
+                            -----------> Another Program on the network ..
+
+                                java.io.InputStream
+                    Program <----------- File
+                            <----------- KB/Mouse
+                            <----------- another Prog on network
+            
+            TextStreams (data can written or read as character/strings)
+
+                               java.io.Writer       java.io.OutputStream
+                    Program ----Text---->    bytes  -----------> File
+                            ----Text---->    bytes  -----------> Console
+                            ----Text---->    bytes  -----------> Another Program on the network ..
+
+                             java.io.Reader    java.io.InputStream
+                    Program <-Text------ bytes <----------- File
+                            <-Text------ bytes <----------- KB/Mouse
+                            <-Text------ bytes <----------- another Prog on network
+
+                    java.io.InputStream
+                                FileInputStream
+                                ObjectInputStream   //deserialization
+                    
+                    java.io.OutputStream
+                                FileOutputStream
+                                ObjkectOutputStream //serialization
+                                PrintStream
+
+                    java.io.Reader
+                                InputStreamReader
+                                BufferedReader
+                                FileReader
+
+                    java.io.Writer
+                                FileWriter
+                    
+                    File
+                    IOException
+                    FileNotFoundException
+                    
+
     Generics and Coillections
-    Functional Interfaces, Lambda Expressions and Strems API
-    JDBC api
+
+            Generics are also ADT, Abstract Data Type.......
+
+                swap two variables:
+                    t = a;
+                    a = b;
+                    b = t;
+
+        Collections
+        --------------java approach to datastructures------------------------------------
+
+            java.util
+
+                    DECLARATIONS (interfaces)
+
+                            Collection   (group of eles)    Map (group of key,value pairs)
+                                |                           |
+                            ---------                       SortedMap
+                            |       |
+                            Set     List
+                            |
+                            SortedSet
+
+                    IMPLEMENTATIONS
+
+                        Set implementations
+                                - No duplicates
+                                - Dont have the concept of index
+                                - Dont support random access
+                                - One single Null is allowed
+
+                            HashSet             the order of retrive is uncerten
+                            LinkedHashSet       the order of retrive is entry order
+                            TreeSet             the order of retrival is sorted order 
+                                                    primitive elements or string - ascending order
+                                                    other types, Comparable/Comparator will dictact.
+
+                                    java.lang.Comparable
+                                            default comparision
+                                            implemented by the class 
+                                            whose object are beign comapred.
+
+                                    java.util.Comparator
+                                            external comparision 
+
+                     List implementations
+                                - Allowed duplicates
+                                - have the concept of index
+                                - support random access
+                                - Nulls are allowed
+                            
+                            ArrayList       internally an array
+                            Vector          internally an array, and thread safe.
+                            LinkedList      internally a double linked list
+
+                    ALGORITHMS
+
+                            Iterator
+                            ListIterator
+                            Collections
+                            Arrays
+                            Comparator
+
+    Functional Interfaces
+
+            is an interface that has one and only one abstract method.
+
+            @FunctionalInterface
+            interface ISummer{
+                public abstract double sum(int a,int b);                
+            }
+            
+            @FunctionalInterface
+            interface IGreet{
+                public abstract String greet(String userName);
+            }
+    
+    Lambda Expressions 
+
+            (argsList) -> returnValueExpression;
+            (argsList) -> { function body.... };
+
+            ISummer summerObj = (x,y) -> x+y;
+            Sysout.out.println(summerObj.sum(10,20));
+    
+            IGreet helloGreeter = (unm) -> "Hello "+ unm;
+            System.out.println(helloGreeter.greet("Vamsy")); //Hello Vamsy
+
+            IGreet tiemBasedGreeter = (unm) -> {
+                int h = LocalDate.now().getHour();
+                String greeting = "";
+                if(h>=4 && h<=12) greeting = "Good Morning ";
+                else if(h>=12 && h<=14) greeting = "Good Noon ";
+                else greeting = "Good Evening ";
+                return greeting + unm;
+            };
+            System.out.println(tiemBasedGreeter.greet("Vamsy")); //Hello Vamsy
+
+    Functional Interfces Categories
+
+            Suppliers
+                            @FunctionalInterface
+                            interface StringSupplier{
+                                public abstract String get();
+                            }
+
+                            StringSupplier orgTitle = () -> "CTS";
+
+            Consumers            
+                            @FunctionalInterface
+                            interface StringConsumer{
+                                public abstract void use(String str);
+                            }
+
+                            StringConsumer display = (s) -> {System.out.println(s);};
+                     
+            Predicates      those FunctionalInterface that always return boolean
+
+            Functional      thois FunctionalInterface that accept args and return a value.
+
+    java.util.function
+    
+    Strems API
+    
+
