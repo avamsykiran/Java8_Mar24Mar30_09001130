@@ -1,6 +1,7 @@
 package com.cts.javafundas.model;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Book implements Comparable<Book>{
 	
@@ -8,6 +9,7 @@ public class Book implements Comparable<Book>{
 	private String name;
 	private LocalDate dateOfPub;
 	private double price;
+	private String[] authors;
 	
 	public Book(){
 		
@@ -19,6 +21,15 @@ public class Book implements Comparable<Book>{
 		this.name = name;
 		this.dateOfPub = dateOfPub;
 		this.price = price;
+	}
+	
+	public Book(int bcode, String name, LocalDate dateOfPub, double price, String[] authors) {
+		super();
+		this.bcode = bcode;
+		this.name = name;
+		this.dateOfPub = dateOfPub;
+		this.price = price;
+		this.authors = authors;
 	}
 
 	public int getBcode() {
@@ -53,17 +64,25 @@ public class Book implements Comparable<Book>{
 		this.price = price;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [bcode=" + bcode + ", name=" + name + ", dateOfPub=" + dateOfPub + ", price=" + price + "]";
+	public String[] getAuthors() {
+		return authors;
 	}
 
-	
-	
+	public void setAuthors(String[] authors) {
+		this.authors = authors;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bcode=" + bcode + ", name=" + name + ", dateOfPub=" + dateOfPub + ", price=" + price
+				+ ", authors=" + Arrays.toString(authors) + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + Arrays.hashCode(authors);
 		result = prime * result + bcode;
 		result = prime * result + ((dateOfPub == null) ? 0 : dateOfPub.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -82,6 +101,8 @@ public class Book implements Comparable<Book>{
 		if (getClass() != obj.getClass())
 			return false;
 		Book other = (Book) obj;
+		if (!Arrays.equals(authors, other.authors))
+			return false;
 		if (bcode != other.bcode)
 			return false;
 		if (dateOfPub == null) {
@@ -104,5 +125,5 @@ public class Book implements Comparable<Book>{
 		return ((Integer)this.bcode).compareTo(o.bcode);
 	}
 
-	
+	 	
 }

@@ -469,7 +469,7 @@ Java
                          }
 
     IO Streams
-                    stream is a flow of 'data'
+                    stream is a flow of 'data' from an input or an output device.
 
             BinaryStreams (data can written or read as 'bytes')
 
@@ -641,5 +641,39 @@ Java
     java.util.function
     
     Strems API
-    
+    =========================================================================
 
+        Stream is a flow of data from  a datasource.
+        a datasurce can be an array or any other collection.
+
+
+        java.util.stream.Stream.of(array);
+
+        java.util.Collection::stream()
+
+    
+        java.util.stream.Stream
+                                forEach(Consumer)               //terminal operation
+                                reduce(BinaryOperator)          //terminal operation
+                                collect(Collector)              //terminal operation
+                                filter(Predicate)               //intermediate operation
+                                map(Functional transformer)     //intermediate operation
+                                sorted(BinaryOperator)          //intermediate operation
+                                flatMap(Functional transformer) //intermediate operation
+
+        int a[] = {1,2,3,4,5};
+        BinaryOperator<Integer> bo = (a,b) -> a+b;
+        Stream.of(a).reduce(bo); //Optional<Integer> = 15
+
+                ((((1+2)+3)+4)+5)
+
+        Stream.of(a).map(n -> n*n).forEach(System.out::println); //1,4,9,16,25
+        Stream.of(a).map(n -> "Hello"+n).forEach(System.out::println); //
+        
+
+    JDBC
+    ----------------------------------------------------------
+
+            Driver Loading is optional.
+
+            
